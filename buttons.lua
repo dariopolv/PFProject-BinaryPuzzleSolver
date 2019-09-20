@@ -1,3 +1,5 @@
+griglia = require "grid.griglia"
+
 BUTTON_HEIGHT = 64  
 function newButton(text, fn)
   return {text = text, fn = fn,
@@ -9,16 +11,26 @@ end
  buttons2 = {}
 
  font = nil
- 
- function generate(bx, by, w, z, grid)
-      mx,my = love.mouse.getPosition()
-      for i, button in ipairs(grid) do
+  
+  function gen(grid, var)
+    bx = 500 + var
+    by = 60
+    w = bx + 20
+    
+    button_width = 55
+    button_height = 45
+    for i, button in ipairs(grid) do
+
+      by = by + 50
+      z = by + 5
+      
       button.last = button.now
-       color = {0.4, 0.4, 0.5, 1.0} 
+      
+      color = {0.4, 0.4, 0.5, 1.0} 
     
-    
- hot = mx > bx and mx < bx + 200  and
-           my > by and my < by + 43
+ mx, my = love.mouse.getPosition()
+ hot = mx > bx and mx < bx + button_width + 100  and
+           my > by and my < by + button_height
                 
     if hot then
       color = {0.8, 0.8, 0.9, 1.0}
@@ -34,8 +46,8 @@ end
     love.graphics.rectangle("fill", 
       bx,
       by,
-      150,
-      45
+      button_height+100,
+      button_width -10
     )
     
      textW = font:getWidth(button.text)
@@ -46,11 +58,16 @@ end
         button.text,
         font,
         w,z
-        )
+      )
+      
+     -- print(bx, by, w, z)
+      
     end
-  end
+    end
+ 
   
   function generate_buttons(grid) 
+
   ww = love.graphics.getWidth()
   wh = love.graphics.getHeight()
   
@@ -103,28 +120,26 @@ end
         )
       
       cursor_y = cursor_y + (BUTTON_HEIGHT + margin)
+ 
       
     end
 end
 
-function draw_buttons(a, b, w, x, y, z) 
-        function love.draw()
-        drawTables(a, b)
-        table.insert(buttons2, newButton("Back", function() 
-              function love.draw()
-                love.graphics.setBackgroundColor(0,0,0,0)
-                generate_buttons(buttons)
-                end
-      end))
-        generate(w,x,y,z,buttons2)
-        
-        table.insert(buttons2, newButton("Solve", function() 
-              function love.draw() 
-                drawTables(a,b)
-              end
-            end
-            ))
-        generate(w,x+60, y, z+60, buttons2)
+
+function draw_butt(a,b,var)
   
+  function love.draw()
+   drawTables(a,b) 
+   gen(buttons2,var)
+   end
 end
-  end
+
+function draw_buttons(a, b, var) 
+   
+        function love.draw()
+         
+        drawTables(a, b)
+        gen(buttons2,var)
+end
+
+end
