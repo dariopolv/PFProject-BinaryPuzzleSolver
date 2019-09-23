@@ -93,8 +93,17 @@ end
         table.insert(buttons2, newButton("Solve", function() 
               
               function love.draw() 
+                bool = false
                 setvariables()
-                drawTables(a,b)
+                cont = 0
+                 
+                 repeat  resolve(griglia,a)
+                   cont = cont +1
+                 until ( cont == 200) 
+                 
+                
+                printSolution(a,b)
+            
               end
             end
             ))
