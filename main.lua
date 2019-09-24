@@ -10,6 +10,8 @@ function love.load()
   mode10 = false
   mode12 = false
   
+  
+  
   function resetControl()
     mode6 = false
     mode8 = false
@@ -43,6 +45,8 @@ function love.load()
   end
 end
 
+
+
   table.insert(buttons, newButton("6 x 6 Mode", 
       
       function() 
@@ -61,7 +65,8 @@ end
         mode(a,b)
         draw_buttons(a,b,var)
      
-        end))
+      end))
+  
 
   table.insert(buttons, newButton("10 x 10 Mode",
       function() 
@@ -82,6 +87,32 @@ end
   table.insert(buttons, newButton("Quit", function() love.event.quit(0) end))
   
   
+  table.insert(buttons3, newButton("Back", function()
+              function love.draw()
+                love.graphics.setBackgroundColor(0,0,0,0)
+                resetControl()
+                resetSolution()
+                generate_buttons(buttons)
+                end
+              end))
+          
+          
+table.insert(buttons3, newButton("Refresh", function()
+      
+      setvariables()
+      resetSolution()
+      mode(a,b)
+      draw_buttons(a,b,var)
+    end
+    ))
+      
+          
+
+table.insert(buttons3, newButton("Quit", function() 
+                love.event.quit(0)
+                end))
+  
+  
   table.insert(buttons2, newButton("Back", function() 
               function love.draw()
                 love.graphics.setBackgroundColor(0,0,0,0)
@@ -91,28 +122,22 @@ end
       end))
         
         table.insert(buttons2, newButton("Solve", function() 
-              
-              function love.draw() 
-                bool = false
-                setvariables()
-                cont = 0
-                 
-                 repeat  resolve(griglia,a)
-                   cont = cont +1
-                 until ( cont == 200) 
-                 
-                
-                printSolution(a,b)
-            
-              end
-            end
+               setvariables()
+               for i = 1, 100 do
+               resolve(griglia,a)
+               end
+               printSolution(a,b,var)
+          end
             ))
         
         table.insert(buttons2, newButton("Refresh", function()
+          
                setvariables()
                mode(a,b)
                draw_buttons(a,b,var)
               end))
+          
+          
 
 end
 
