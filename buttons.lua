@@ -9,6 +9,8 @@ end
 
  buttons = {}
  buttons2 = {}
+ buttons3 = {}
+ 
 
  font = nil
   
@@ -59,9 +61,6 @@ end
         font,
         w,z
       )
-      
-     -- print(bx, by, w, z)
-      
     end
     end
  
@@ -125,14 +124,6 @@ end
     end
 end
 
-
-function draw_butt(a,b,var)
-  
-  function love.draw()
-   drawTables(a,b) 
-   gen(buttons2,var)
-   end
-end
 
 function draw_buttons(a, b, var) 
    
