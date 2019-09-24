@@ -404,6 +404,8 @@ elseif size == 12 then
   end
 end
 
+
+
 function mode(x, y) 
   initialize(x,griglia)
   size = griglia:getWidth(griglia)
@@ -421,7 +423,15 @@ function mode(x, y)
   end
 end
 
-function printSolution(a,b)
+function resetSolution()
+                solution0Xtab = {}
+                solution0Ytab = {}
+                solution1Xtab = {}
+                solution1Ytab = {}
+              end
+              
+
+function printSolution(a,b,var)
  function love.draw()
   drawTables(a,b)
   love.graphics.setColor(0,0,0,1)
@@ -430,8 +440,10 @@ function printSolution(a,b)
 end
 for i = 1, #solution0Xtab do
   love.graphics.print(0, a*b*solution0Xtab[i]+143, a*b*solution0Ytab[i]+43)
-  end
-  end
+end
+
+gen(buttons3,var)
+end
   end
 
 return griglia 
