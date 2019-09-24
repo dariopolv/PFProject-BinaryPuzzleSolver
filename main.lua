@@ -45,17 +45,17 @@ function love.load()
   end
 end
 
-
-
   table.insert(buttons, newButton("6 x 6 Mode", 
       
       function() 
       mode6 = true
       setvariables()
       mode(a, b)
-      draw_buttons(a, b, var)
+      draw_buttons(a, b, var,0)
          
     end))
+
+
 
   table.insert(buttons, newButton("8 x 8 Mode",
       function() 
@@ -63,7 +63,7 @@ end
         mode8 = true
         setvariables()
         mode(a,b)
-        draw_buttons(a,b,var)
+        draw_buttons(a,b,var,0)
      
       end))
   
@@ -73,7 +73,7 @@ end
         mode10 = true
         setvariables()
         mode(a,b)
-        draw_buttons(a,b,var)
+        draw_buttons(a,b,var,0)
       end))
 
   table.insert(buttons, newButton("12 x 12 Mode",
@@ -81,7 +81,7 @@ end
         mode12 = true
         setvariables()
         mode(a,b)
-        draw_buttons(a,b,var)
+        draw_buttons(a,b,var,0)
       end))
 
   table.insert(buttons, newButton("Quit", function() love.event.quit(0) end))
@@ -102,7 +102,7 @@ table.insert(buttons3, newButton("Refresh", function()
       setvariables()
       resetSolution()
       mode(a,b)
-      draw_buttons(a,b,var)
+      draw_buttons(a,b,var,0)
     end
     ))
       
@@ -134,7 +134,7 @@ table.insert(buttons3, newButton("Quit", function()
           
                setvariables()
                mode(a,b)
-               draw_buttons(a,b,var)
+               draw_buttons(a,b,var,0)
               end))
           
           
@@ -142,6 +142,5 @@ table.insert(buttons3, newButton("Quit", function()
 end
 
 function love.draw()
-  generate_buttons(buttons)
-
+generate_buttons(buttons)
 end

@@ -442,7 +442,7 @@ for i = 1, #solution0Xtab do
   love.graphics.print(0, a*b*solution0Xtab[i]+143, a*b*solution0Ytab[i]+43)
 end
 
-gen(buttons3,var)
+gen(buttons3,var,150)
 end
   end
 

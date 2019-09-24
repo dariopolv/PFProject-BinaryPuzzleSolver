@@ -10,13 +10,14 @@ end
  buttons = {}
  buttons2 = {}
  buttons3 = {}
+-- buttons4 = {}
  
 
  font = nil
   
-  function gen(grid, var)
+  function gen(grid, var, position)
     bx = 500 + var
-    by = 60
+    by = 60 + position
     w = bx + 20
     
     button_width = 55
@@ -125,12 +126,12 @@ end
 end
 
 
-function draw_buttons(a, b, var) 
+function draw_buttons(a, b, var, position) 
    
         function love.draw()
          
         drawTables(a, b)
-        gen(buttons2,var)
+        gen(buttons2,var, position)
 end
 
 end
